@@ -39,12 +39,17 @@ class _QuizState extends State<Quiz> {
         ? StartScreen(changeScreen)
         : const QuestionsScreen();
 
+    //? another way to initialize screenWidget
+    /*if (activeScreen == 'questionsScreen') {
+      screenWidget = const QuestionsScreen();
+    }*/
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
-            decoration: boxDecorationOfContainer(),
-            child:
-                screenWidget), /*activeScreen == 'startScreen'
+            decoration: boxDecorationOfContainer(), child: screenWidget),
+        //? another way to initialize screenWidget
+        /*activeScreen == 'startScreen'
         ? StartScreen(changeScreen)
         : const QuestionsScreen(); */
       ),
