@@ -1,6 +1,9 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
+
+final random = Random();
 
 class Quiz extends StatefulWidget {
   const Quiz({Key? key}) : super(key: key);
@@ -58,11 +61,16 @@ class _QuizState extends State<Quiz> {
 }
 
 BoxDecoration boxDecorationOfContainer() {
-  return const BoxDecoration(
+  return BoxDecoration(
     gradient: LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [Colors.blue, Colors.red],
+      colors: [
+        Color.fromRGBO(
+            random.nextInt(255), random.nextInt(255), random.nextInt(255), 1),
+        Color.fromRGBO(
+            random.nextInt(255), random.nextInt(255), random.nextInt(255), 1)
+      ],
     ),
   );
 }
