@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
@@ -36,11 +37,26 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  List<String> selectedAnswers = [];
+
+  void storeSelectedAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = 'startScreen';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Widget screenWidget = activeScreen == 'startScreen'
         ? StartScreen(changeScreen)
-        : const QuestionsScreen();
+        : QuestionsScreen(
+            onSelectAnswerStore: storeSelectedAnswer,
+          );
 
     //? another way to initialize screenWidget
     /*if (activeScreen == 'questionsScreen') {
