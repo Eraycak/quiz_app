@@ -14,6 +14,7 @@ class ResultsScreen extends StatelessWidget {
   final void Function() onRestart;
 
   List<Map<String, Object>> getSummaryData() {
+    //? get summaryData is similar to getSummaryData() which is getter method
     final List<Map<String, Object>> summaryData = [];
     for (int i = 0; i < chosenAnswers.length; i++) {
       summaryData.add({
@@ -32,7 +33,7 @@ class ResultsScreen extends StatelessWidget {
     final int numTotalQuestions = questions.length;
     final int numCorrectAnswers = summaryData
         .where((data) => data['userChosenAnswer'] == data['correctAnswer'])
-        .length;
+        .length; //? could be written as .where((data) {return data['userChosenAnswer'] == data['correctAnswer'];}).length;
     return SizedBox(
       width: double.infinity,
       child: Container(
