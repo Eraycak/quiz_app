@@ -45,10 +45,16 @@ class _QuizState extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
         activeScreen = 'resultsScreen';
       });
     }
+  }
+
+  void restartQuiz() {
+    setState(() {
+      activeScreen = 'startScreen'; //? questionScreen in video
+      selectedAnswers = [];
+    });
   }
 
   @override
@@ -61,6 +67,7 @@ class _QuizState extends State<Quiz> {
               )
             : ResultsScreen(
                 chosenAnswers: selectedAnswers,
+                onRestart: restartQuiz,
               );
 
     //? another way to initialize screenWidget
