@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_screen.dart';
+import 'package:quiz_app/results_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 final random = Random();
@@ -45,7 +46,7 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       setState(() {
         selectedAnswers = [];
-        activeScreen = 'startScreen';
+        activeScreen = 'resultsScreen';
       });
     }
   }
@@ -54,13 +55,20 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     final Widget screenWidget = activeScreen == 'startScreen'
         ? StartScreen(changeScreen)
-        : QuestionsScreen(
-            onSelectAnswerStore: storeSelectedAnswer,
-          );
+        : activeScreen == 'questionsScreen'
+            ? QuestionsScreen(
+                onSelectAnswerStore: storeSelectedAnswer,
+              )
+            : ResultsScreen(
+                chosenAnswers: selectedAnswers,
+              );
 
     //? another way to initialize screenWidget
     /*if (activeScreen == 'questionsScreen') {
       screenWidget = const QuestionsScreen();
+    }
+    else if (activeScreen == 'resultsScreen') {
+      screenWidget = const ResultsScreen();
     }*/
 
     return MaterialApp(
