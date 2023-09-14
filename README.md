@@ -1,7 +1,7 @@
 # quiz_app
  Flutter & Dart - The Complete Guide Practice
 
- This is the example showcase of the app.
+ This is the video of the app.
 
 
  
